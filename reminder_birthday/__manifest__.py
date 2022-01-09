@@ -12,7 +12,7 @@
     """,
     'license': 'LGPL-3',
     'author': 'Raúl F',
-    'website': 'github',
+    'website': 'https://github.com/rauferdeveloper/reminder_birthday',
     'depends': ['base', 'hr', 'mail'],
     'data': [
         'data/cron.xml',
