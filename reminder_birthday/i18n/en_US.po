@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0\n"
+"Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 18:36+0000\n"
-"PO-Revision-Date: 2022-01-09 18:36+0000\n"
+"POT-Creation-Date: 2022-01-10 18:14+0000\n"
+"PO-Revision-Date: 2022-01-10 18:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,8 +28,8 @@ msgid ""
 "                                        <td align=\"center\" style=\"min-width: 590px;\">\n"
 "                                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
 "                                                <tr>\n"
-"                                                    <td t-if=\"object.company_id.logo\" valign=\"middle\" align=\"right\">\n"
-"                                                       <img t-attf-src=\"/logo.png?company={{ object.company_id.id }}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" t-att-alt=\"object.company_id.name\"/>\n"
+"                                                    <td valign=\"middle\" align=\"right\">\n"
+"                                                       <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
 "                                                    </td>\n"
 "                                                </tr>\n"
 "                                                <tr>\n"
@@ -47,12 +47,12 @@ msgid ""
 "                                                <tr>\n"
 "                                                    <td valign=\"top\" style=\"font-size: 13px;\">\n"
 "                                                        <div>\n"
-"                                                            <p>Dear <t t-out=\"object.name or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\"/>,</p>\n"
+"                                                            <p>Dear ${object.name},</p>\n"
 "                                                            <p>Happy Birthday!!!!</p>\n"
 "                                                            <p>Hope you have a great year ahead. Stay Healthy, Stay Happy &amp; Stay Safe.</p>\n"
 "                                                            <br/>\n"
 "                                                            <p>Thanks,</p>\n"
-"                                                            <p><t t-out=\"object.company_id.name or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\"/></p>\n"
+"                                                            <p>${object.company_id.name}</p>\n"
 "                                                            <br/><br/>\n"
 "                                                        </div>\n"
 "                                                    </td>\n"
@@ -71,22 +71,20 @@ msgid ""
 "                                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
 "                                                <tr>\n"
 "                                                    <td valign=\"middle\" align=\"left\">\n"
-"                                                        <t t-out=\"object.company_id.name or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\"/>\n"
+"                                                        ${object.company_id.name}\n"
 "                                                    </td>\n"
 "                                                </tr>\n"
 "                                                <tr>\n"
 "                                                    <td valign=\"middle\" align=\"left\" style=\"opacity: 0.7;\">\n"
-"                                                        <t t-out=\"object.company_id.phone or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\"/>\n"
-"                                                       \n"
-"                                                       <t t-if=\"object.company_id.email\">\n"
-"                                                            <a href=\"'mailto:%s' % object.company_id.email\" style=\"text-decoration:none; color: #454748;\"><t t-out=\"object.company_id.email or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\"/></a>\n"
-"                                                       </t>\n"
-"                                                       \n"
-"                                                       <t t-if=\"object.company_id.website\">\n"
-"                                                            <a href=\"'%s' % object.company_id.website \" style=\"text-decoration:none; color: #454748;\">\n"
-"                                                                <t t-out=\"object.company_id.website or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\"/>\n"
+"                                                        ${object.company_id.phone}\n"
+"                                                        % if object.company_id.email\n"
+"                                                            <a href=\"'mailto:%s' % ${object.company_id.email}\" style=\"text-decoration:none; color: #454748;\">${object.company_id.email}</a>\n"
+"                                                        % endif\n"
+"                                                        % if object.company_id.website\n"
+"                                                            <a href=\"'%s' % ${object.company_id.website}\" style=\"text-decoration:none; color: #454748;\">\n"
+"                                                                ${object.company_id.website}\n"
 "                                                            </a>\n"
-"                                                       </t>\n"
+"                                                        % endif\n"
 "                                                    </td>\n"
 "                                                </tr>\n"
 "                                            </table>\n"
@@ -109,7 +107,7 @@ msgstr ""
 
 #. module: reminder_birthday
 #: model:mail.template,subject:reminder_birthday.employee_reminder_birthday_template
-msgid "Birthday Wishes from {{ object.company_id.name }}"
+msgid "Birthday Wishes from ${object.company_id.name | safe}"
 msgstr ""
 
 #. module: reminder_birthday
@@ -123,13 +121,47 @@ msgid "Config Settings"
 msgstr ""
 
 #. module: reminder_birthday
+#: model:ir.model,name:reminder_birthday.model_mail_channel
+msgid "Discussion Channel"
+msgstr ""
+
+#. module: reminder_birthday
+#: model:ir.model.fields,field_description:reminder_birthday.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:reminder_birthday.field_mail_channel__display_name
+#: model:ir.model.fields,field_description:reminder_birthday.field_res_company__display_name
+#: model:ir.model.fields,field_description:reminder_birthday.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: reminder_birthday
 #: model:ir.model,name:reminder_birthday.model_hr_employee
 msgid "Employee"
 msgstr ""
 
 #. module: reminder_birthday
-#: model:mail.template,name:reminder_birthday.employee_reminder_birthday_template
-msgid "Employee: Reminder Birthday "
+#: model:ir.model.fields,help:reminder_birthday.field_mail_channel__member_count
+msgid "Excluding guests from count."
+msgstr ""
+
+#. module: reminder_birthday
+#: model:ir.model.fields,field_description:reminder_birthday.field_hr_employee__id
+#: model:ir.model.fields,field_description:reminder_birthday.field_mail_channel__id
+#: model:ir.model.fields,field_description:reminder_birthday.field_res_company__id
+#: model:ir.model.fields,field_description:reminder_birthday.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: reminder_birthday
+#: model:ir.model.fields,field_description:reminder_birthday.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:reminder_birthday.field_mail_channel____last_update
+#: model:ir.model.fields,field_description:reminder_birthday.field_res_company____last_update
+#: model:ir.model.fields,field_description:reminder_birthday.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: reminder_birthday
+#: model:ir.model.fields,field_description:reminder_birthday.field_mail_channel__member_count
+msgid "Member Count"
 msgstr ""
 
 #. module: reminder_birthday
