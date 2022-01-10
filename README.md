@@ -1,4 +1,4 @@
-Addons Odoo v.15
+Addons Odoo v.14
 =============================
 
 [//]: # (addons)
