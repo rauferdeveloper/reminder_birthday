@@ -33,6 +33,8 @@ class HrEmployee(models.Model):
                     for user in users:
                         if employee.user_id and employee.user_id.id == user.id:
                             continue
+                        if employee.company_id.id not in user.company_ids.ids:
+                            continue
                         channel = mail_channel_partner_obj.sudo().search([
                             ('partner_id','=',user.partner_id.id),
                             ('channel_id.channel_type','=','chat'),

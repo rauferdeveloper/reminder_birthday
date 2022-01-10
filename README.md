@@ -7,6 +7,6 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[reminder_birthday](reminder_birthday/) | 15.0.0.0 | Reminder Birthday Notification
+[reminder_birthday](reminder_birthday/) | 15.0.0.1 | Reminder Birthday Notification
 
 [//]: # (end addons)
