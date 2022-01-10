@@ -4,7 +4,7 @@
 
 {
     'name': 'Birthday Reminder Notification',
-    'version': '15.0.0.0',
+    'version': '14.0.0.0',
     'category': 'Tools',
     'summary': 'Birthday reminder for employee',
     'description': """
